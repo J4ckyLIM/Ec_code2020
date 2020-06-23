@@ -107,4 +107,15 @@ class Media {
     return $req->fetchAll();
 
   }
+
+  public static function getMediaById( $id ) {
+    $db   = init_db();
+
+    $req  = $db->prepare('SELECT * FROM media WHERE id = ?');
+    $req->execute( array( $id ));
+    // Close databse connection
+    $db   = null;
+
+    return $req->fetch();
+  }
 }

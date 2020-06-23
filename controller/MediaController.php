@@ -18,7 +18,9 @@ if(isset( $_GET['media'])){
 
 function showMedia($id) {
   console_log($id);
-  //require("view/mediaDetails.php");
+  $media = Media::getMediaById($id);
+  console_log($media);
+  require("view/mediaDetails.php");
 }
 
 

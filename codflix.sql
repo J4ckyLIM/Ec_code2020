@@ -60,6 +60,8 @@ CREATE TABLE `media` (
   `status` varchar(20) NOT NULL,
   `release_date` date NOT NULL,
   `summary` longtext NOT NULL,
+  `duration` int(11) NOT NULL,
+  `season` int(11) NULL,
   `trailer_url` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

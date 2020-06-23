@@ -9,11 +9,14 @@
 
                 <button type="submit" class="btn btn-block bg-red">Valider</button>
             </div>
+            <span class="error-msg">
+              <?= isset( $error_msg ) ? $error_msg : null; ?>
+            </span>
         </form>
     </div>
 </div>
 
-<div class="media-list">
+<div class="media-list" data="<?php $medias ?>">
     <?php foreach( $medias as $media ): ?>
         <a class="item" href="index.php?media=<?= $media['id']; ?>">
             <div class="video">

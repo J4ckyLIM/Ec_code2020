@@ -91,27 +91,20 @@ class Media {
   public static function filterMedias( $title ) {
 
     // Open database connection
-    $db   = init_db();
-
-    $req  = $db->prepare( "SELECT * FROM media WHERE title = ? ORDER BY release_date DESC" );
-    $req->execute( array( '%' . $title . '%' ));
-
+    $db   = init_db(); 
+    $sql  = ""; // Will store our SQL query
+    if(empty($title)){
+      $sql = "SELECT * FROM media";
+    }
+    else {
+      $sql = 'SELECT * FROM media WHERE title LIKE "%'.$title.'%" ORDER BY release_date DESC';
+    }
+    $req  = $db->prepare($sql);
+    $req->execute();
     // Close databse connection
     $db   = null;
 
     return $req->fetchAll();
 
-  }
-
-  public static function getAllMedias() {
-    $db = init_db();
-
-    $req = $db->prepare( "SELECT * FROM media");
-    $req->execute();
-
-    // Close database connection
-    $db = null;
-
-    return $req->fetchAll();
   }
 }

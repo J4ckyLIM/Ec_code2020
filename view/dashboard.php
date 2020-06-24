@@ -18,8 +18,11 @@
         <h2 class="title">Bienvenue</h2>
         <div class="sidebar-menu">
           <ul>
-            <li class="active"><a href="/CodFlix/">Médias</a></li>
-            <li><a href="#">Nous contacter</a></li>
+            <li class="active"><a href="/Ec_code2020">Médias</a></li>
+            <li><a href="index.php?redirectTo=favorite">Mes favoris</a></li>
+            <li><a href="index.php?redirectTo=profil">Mon profil</a></li>
+            <li><a href="index.php?redirectTo=history">Mon historique</a></li>
+            <li><a href="index.php?redirectTo=contact">Nous contacter</a></li>
             <li><a href="index.php?action=logout">Me déconnecter</a></li>
           </ul>
         </div>
@@ -43,7 +46,7 @@
       </div>
     </div>
 
-    <script src="public/lib/jquery/js/jquery-3.5.0.min"></script>
+    <script src="public/lib/jquery/js/jquery-3.5.0.min.js"></script>
     <script src="public/lib/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="public/js/script.js"></script>

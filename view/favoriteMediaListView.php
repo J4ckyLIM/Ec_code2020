@@ -16,6 +16,7 @@
     </div>
 </div>
 
+<h3>Mes favoris</h3>
 <div class="media-list" data="<?php $medias ?>">
     <?php foreach( $medias as $media ): ?>
         <a class="item" href="index.php?media=<?= $media['id']; ?>">

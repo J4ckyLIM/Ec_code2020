@@ -6,6 +6,7 @@ require_once( 'controller/signupController.php' );
 require_once( 'controller/mediaController.php' );
 require_once( 'controller/favoriteController.php');
 require_once( 'controller/profilController.php');
+require_once( 'controller/contactController.php');
 
 /**************************
 * ----- HANDLE ACTION -----
@@ -55,6 +56,14 @@ else:
 
           profilPage();
 
+        break;
+
+        case 'contact':
+          if(!empty($_POST)):
+            contactPage($_POST);
+          else:
+            require('view/contactView.php');
+          endif;
         break;
 
       endswitch;

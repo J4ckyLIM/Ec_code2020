@@ -21,6 +21,15 @@ function mediaPage() {
         showMedia($_GET['media']);
       }
     else:
+      // Since user clicks on a media it automatically adds it to his history
+      // Can't retrieve the watch duration for now so I use rand to fake data
+      try {
+        Media::addMediaToUserHistory($_SESSION['user_id'], $_GET['media'], date("Y-m-d"), null, rand(10, 120));
+      }
+      catch(Exception $e) {
+        // Load media anyway
+        showMedia($_GET['media']);
+      }
       showMedia($_GET['media']);
     endif;
   }

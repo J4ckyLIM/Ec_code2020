@@ -184,4 +184,31 @@ class Media {
 
     return $req->fetchAll();
   }
+
+  /**
+   * Fetch all the media the user has in favorit list
+   * @param {Number} userId id of the user
+   */
+  public function addMediaToUserHistory( $userId, $mediaId , $start_date, $finish_date, $watch_duration ){
+    $db   = init_db();
+
+    // Check if relation already exist
+    $req  = $db->prepare( "SELECT * FROM history WHERE user_id = $userId AND media_id = $mediaId" );
+    $req->execute();
+
+    if( $req->rowCount() > 0 ) throw new Exception( "Déjà ajouté à l'historique" );
+
+    $req  = $db->prepare("INSERT INTO history (user_id, media_id, start_date, finish_date, watch_duration) VALUES ( :user_id, :media_id, :start_date, :finish_date, :watch_duration )");
+    $req->execute( array(
+      'user_id' => $userId,
+      'media_id' => $mediaId,
+      'start_date' => $start_date,
+      'finish_date' => $finish_date,
+      'watch_duration' => $watch_duration
+    ));
+    // Close databse connection
+    $db   = null;
+
+    return $req->fetchAll();
+  }
 }

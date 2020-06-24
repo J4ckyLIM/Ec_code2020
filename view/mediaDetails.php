@@ -15,7 +15,7 @@
 <div class="col mt-4">
     <div class="row mt-4">
         <div class="col mt-2">
-            <span id="media_genre" class="row"><?= $media['genre_id']?> <?= $media['type']?></span>
+            <span id="media_genre" class="row"><?= $media['genre_id']?> <?= $media['type_id']?></span>
             <p class="row" id="media_duration"><?= $media['duration']?></p>
             <p class="row">Date de réalisation: <?= $media['release_date']?></p>
         </div>

@@ -26,7 +26,7 @@
         <p></p>
     </div>
     <div class="row video mt-4 video_detail">
-        <iframe width="100%" src="http://www.youtube.com/embed/<?= $media['trailer_url']; ?>" 
+        <iframe width="100%" src="http://www.youtube.com/embed/<?= $media['trailer_url']; ?>?autoplay=1" 
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
         </iframe>

@@ -21,6 +21,7 @@
             <li class="active"><a href="/Ec_code2020">Médias</a></li>
             <li><a href="index.php?redirectTo=favorite">Mes favoris</a></li>
             <li><a href="index.php?redirectTo=profil">Mon profil</a></li>
+            <li><a href="index.php?redirectTo=history">Mon historique</a></li>
             <li><a href="index.php?redirectTo=contact">Nous contacter</a></li>
             <li><a href="index.php?action=logout">Me déconnecter</a></li>
           </ul>

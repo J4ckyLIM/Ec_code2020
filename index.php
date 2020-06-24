@@ -7,6 +7,7 @@ require_once( 'controller/mediaController.php' );
 require_once( 'controller/favoriteController.php');
 require_once( 'controller/profilController.php');
 require_once( 'controller/contactController.php');
+require_once( 'controller/historyController.php');
 
 /**************************
 * ----- HANDLE ACTION -----
@@ -55,6 +56,12 @@ else:
         case 'profil':
 
           profilPage();
+
+        break;
+
+        case 'history':
+
+          historyPage();
 
         break;
 

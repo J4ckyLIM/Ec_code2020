@@ -4,7 +4,7 @@ require_once( 'controller/homeController.php' );
 require_once( 'controller/loginController.php' );
 require_once( 'controller/signupController.php' );
 require_once( 'controller/mediaController.php' );
-//require_once( 'controller/favoriteController.php');
+require_once( 'controller/favoriteController.php');
 require_once( 'controller/profilController.php');
 
 /**************************
@@ -47,7 +47,7 @@ else:
         
         case 'favorite':
 
-          print("fav");
+          favoritePage();
 
         break;
 

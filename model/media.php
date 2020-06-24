@@ -94,10 +94,10 @@ class Media {
     $db   = init_db(); 
     $sql  = ""; // Will store our SQL query
     if(empty($title)){
-      $sql = "SELECT * FROM media";
+      $sql = "SELECT * , genre.name as genre_name FROM media JOIN genre ON media.genre_id = genre.id";
     }
     else {
-      $sql = 'SELECT * FROM media WHERE title LIKE "%'.$title.'%" ORDER BY release_date DESC';
+      $sql = 'SELECT *, genre.name as genre_name, type.name as type_name FROM media JOIN type ON media.type_id  = type.id JOIN genre ON media.genre_id = genre.id WHERE title LIKE "%'.$title.'%" ORDER BY release_date DESC';
     }
     $req  = $db->prepare($sql);
     $req->execute();
@@ -111,7 +111,7 @@ class Media {
   public static function getMediaById( $id ) {
     $db   = init_db();
 
-    $req  = $db->prepare('SELECT * FROM media WHERE id = ?');
+    $req  = $db->prepare("SELECT *,  genre.name as genre_name , type.name as type_name FROM media JOIN type ON media.type_id  = type.id JOIN genre ON media.genre_id = genre.id WHERE media.id = ?");
     $req->execute( array( $id ));
     // Close databse connection
     $db   = null;

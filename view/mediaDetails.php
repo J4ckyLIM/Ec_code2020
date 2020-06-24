@@ -5,8 +5,11 @@
         <h3><?= $media['title'] ?></h3>
     </div>
     <div class="col d-flex justify-content-end">
-        <div>
-            <a href="/Ec_code2020" class="btn btn-dark">X</a>
+        <div class="row mr-2">
+            <form method="post">
+                <input type="submit" value="Ajouter au favoris" name="addToFav" id="addToFavBtn" class="btn btn-dark mr-2">
+                <a href="/Ec_code2020" class="btn btn-dark">X</a>
+            </form>
         </div>
         
     </div>
@@ -23,7 +26,7 @@
         <p></p>
     </div>
     <div class="row video mt-4 video_detail">
-        <iframe width="100%" src="http://www.youtube.com/embed/'<?= $media['trailer_url']; ?>" frameborder="0" 
+        <iframe width="100%" src="http://www.youtube.com/embed/<?= $media['trailer_url']; ?>" 
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
         </iframe>

@@ -142,4 +142,19 @@ class Media {
     // Close databse connection
     $db   = null;
   }
+
+  /**
+   * Fetch all the media the user has in favorit list
+   * @param {Number} userId id of the user
+   */
+  public function getUserFavoriteMedia( $userId ){
+    $db   = init_db();
+
+    $req  = $db->prepare("SELECT * from media JOIN user_favorite_media ON media.id = user_favorite_media.media_id WHERE user_favorite_media.user_id = $userId ");
+    $req->execute();
+    // Close databse connection
+    $db   = null;
+
+    return $req->fetchAll();
+  }
 }

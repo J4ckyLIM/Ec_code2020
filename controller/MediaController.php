@@ -6,11 +6,14 @@ require_once( 'model/media.php' );
 * ----- LOAD HOME PAGE -----
 ***************************/
 
+// In mediaListView id isn't used with id but with 0 --> $media['0'] since I got issue with duplicate id (cf console_log)
 function mediaPage() {
   $search = isset( $_GET['title'] ) ? $_GET['title'] : null;
   $medias = Media::filterMedias($search);
   $films = Media::getAllMediaByType(1); // Since 1 = films And 2 = series
   $series = Media::getAllMediaByType(2);
+  console_log($series);
+  console_log($films);
   if(isset( $_GET['media'])){
     if(isset( $_POST['addToFav'])):
       try{

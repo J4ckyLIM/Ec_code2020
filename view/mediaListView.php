@@ -22,7 +22,7 @@
     <h3>Nos films</h3>
     <div class="media-list" data="<?php $films ?>">
         <?php foreach( $films as $film ): ?>
-            <a class="item" href="index.php?media=<?= $film['id']; ?>">
+            <a class="item" href="index.php?media=<?= $film['0']; ?>">
                 <div class="video">
                     <div>
                         <iframe allowfullscreen="" frameborder="0"
@@ -40,7 +40,7 @@
     <h3>Nos séries</h3>
     <div class="media-list" data="<?php $series ?>">
         <?php foreach( $series as $serie ): ?>
-            <a class="item" href="index.php?media=<?= $serie['id']; ?>">
+            <a class="item" href="index.php?media=<?= $serie['0']; ?>">
                 <div class="video">
                     <div>
                         <iframe allowfullscreen="" frameborder="0"
@@ -71,7 +71,7 @@
             </a>
         <?php endforeach; ?>
     </div>
-    
+
 <?php endif ?>
 
 

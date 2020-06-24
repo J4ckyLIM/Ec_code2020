@@ -111,6 +111,24 @@ class Media {
 
   }
 
+  /**
+   * Fetch all media depending on the type given
+   * @param {Number} $typeId type id of the media
+   * @return {Array<Media>} list of media corresponding to the type id given
+   */
+  public static function getAllMediaByType( $typeId ) {
+    $db   = init_db();
+
+    $req  = $db->prepare("SELECT *,  genre.name as genre_name FROM media 
+                          JOIN genre ON media.genre_id = genre.id 
+                          WHERE media.type_id = ?");
+    $req->execute( array( $typeId ));
+    // Close databse connection
+    $db   = null;
+
+    return $req->fetchAll();
+  }
+
   public static function getMediaById( $id ) {
     $db   = init_db();
 

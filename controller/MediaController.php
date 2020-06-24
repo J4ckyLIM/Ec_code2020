@@ -9,6 +9,8 @@ require_once( 'model/media.php' );
 function mediaPage() {
   $search = isset( $_GET['title'] ) ? $_GET['title'] : null;
   $medias = Media::filterMedias($search);
+  $films = Media::getAllMediaByType(1); // Since 1 = films And 2 = series
+  $series = Media::getAllMediaByType(2);
   if(isset( $_GET['media'])){
     if(isset( $_POST['addToFav'])):
       try{

@@ -97,7 +97,10 @@ class Media {
       $sql = "SELECT * , genre.name as genre_name FROM media JOIN genre ON media.genre_id = genre.id";
     }
     else {
-      $sql = 'SELECT *, genre.name as genre_name, type.name as type_name FROM media JOIN type ON media.type_id  = type.id JOIN genre ON media.genre_id = genre.id WHERE title LIKE "%'.$title.'%" ORDER BY release_date DESC';
+      $sql = 'SELECT *, genre.name as genre_name, type.name as type_name FROM media 
+              JOIN type ON media.type_id = type.id 
+              JOIN genre ON media.genre_id = genre.id 
+              WHERE title LIKE "%'.$title.'%" ORDER BY release_date DESC';
     }
     $req  = $db->prepare($sql);
     $req->execute();
@@ -111,7 +114,10 @@ class Media {
   public static function getMediaById( $id ) {
     $db   = init_db();
 
-    $req  = $db->prepare("SELECT *,  genre.name as genre_name , type.name as type_name FROM media JOIN type ON media.type_id  = type.id JOIN genre ON media.genre_id = genre.id WHERE media.id = ?");
+    $req  = $db->prepare("SELECT *,  genre.name as genre_name , type.name as type_name FROM media 
+                          JOIN type ON media.type_id = type.id 
+                          JOIN genre ON media.genre_id = genre.id 
+                          WHERE media.id = ?");
     $req->execute( array( $id ));
     // Close databse connection
     $db   = null;
@@ -150,7 +156,10 @@ class Media {
   public function getUserFavoriteMedia( $userId ){
     $db   = init_db();
 
-    $req  = $db->prepare("SELECT * from media JOIN user_favorite_media ON media.id = user_favorite_media.media_id WHERE user_favorite_media.user_id = $userId ");
+    $req  = $db->prepare("SELECT *, genre.name as genre_name from media 
+                          JOIN genre ON media.genre_id = genre.id
+                          JOIN user_favorite_media ON media.id = user_favorite_media.media_id 
+                          WHERE user_favorite_media.user_id = $userId ");
     $req->execute();
     // Close databse connection
     $db   = null;

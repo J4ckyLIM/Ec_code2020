@@ -126,6 +126,17 @@ CREATE TABLE `user` (
   `password` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_favorite_media`
+--
+
+CREATE table `user_favorite_media` (
+    `user_id` INT(11) NOT NULL, 
+    `media_id` INT(11) NOT NULL, 
+    FOREIGN KEY (`user_id`) REFERENCES `user(id)` ON DELETE CASCADE,
+    FOREIGN KEY (`media_id`) REFERENCES `media(id)` ON DELETE CASCADE);
 --
 -- Indexes for dumped tables
 --

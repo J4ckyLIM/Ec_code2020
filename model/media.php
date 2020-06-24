@@ -144,30 +144,6 @@ class Media {
   }
 
   /**
-   * Add a media to favorit list for a user
-   * @param {Number} mediaId id of the media
-   * @param {Number} userId id of the user
-   */
-  public function addMediaToFavorite($mediaId, $userId){
-    $db   = init_db();
-
-    // Check if relation already exist
-    $req  = $db->prepare( "SELECT * FROM user_favorite_media WHERE user_id = $userId AND media_id = $mediaId" );
-    $req->execute();
-
-    if( $req->rowCount() > 0 ) throw new Exception( "Déjà ajouté aux favoris" );
-
-    $req  = $db->prepare("INSERT INTO user_favorite_media ( user_id, media_id ) VALUES ( :user_id, :media_id)");
-    $req->execute( array(
-      'user_id' => $userId,
-      'media_id' => $mediaId
-    ));
-
-    // Close databse connection
-    $db   = null;
-  }
-
-  /**
    * Fetch all the media the user has in favorit list
    * @param {Number} userId id of the user
    */
@@ -186,6 +162,31 @@ class Media {
   }
 
   /**
+   * Fetch all the media the user has in history list
+   * @param {Number} userId id of the user
+   */
+  public function getUserHistory( $userId ){
+    $db   = init_db();
+
+    // Check if relation already exist
+    $req  = $db->prepare( "SELECT *, media.* , genre.name as genre_name FROM history 
+                          JOIN media ON history.media_id = media.id
+                          JOIN genre ON media.genre_id = genre.id
+                          WHERE user_id = $userId" );
+    $req->execute();
+
+    // Close databse connection
+    $db   = null;
+
+    return $req->fetchAll();
+  }
+
+
+  /***************************
+  * --- ADD TO DB METHODS ----
+  ***************************/
+
+   /**
    * Fetch all the media the user has in favorit list
    * @param {Number} userId id of the user
    */
@@ -210,5 +211,49 @@ class Media {
     $db   = null;
 
     return $req->fetchAll();
+  }
+
+   /**
+   * Add a media to favorit list for a user
+   * @param {Number} mediaId id of the media
+   * @param {Number} userId id of the user
+   */
+  public function addMediaToFavorite($mediaId, $userId){
+    $db   = init_db();
+
+    // Check if relation already exist
+    $req  = $db->prepare( "SELECT * FROM user_favorite_media WHERE user_id = $userId AND media_id = $mediaId" );
+    $req->execute();
+
+    if( $req->rowCount() > 0 ) throw new Exception( "Déjà ajouté aux favoris" );
+
+    $req  = $db->prepare("INSERT INTO user_favorite_media ( user_id, media_id ) VALUES ( :user_id, :media_id)");
+    $req->execute( array(
+      'user_id' => $userId,
+      'media_id' => $mediaId
+    ));
+
+    // Close databse connection
+    $db   = null;
+  }
+
+  /***************************
+  * ---- DELETE FROM DB ------
+  ***************************/
+
+  /**
+   * Add a media to favorit list for a user
+   * @param {Number} mediaId id of the media
+   * @param {Number} userId id of the user
+   */
+  public function deleteMediaFromHistory($mediaId, $userId){
+    $db   = init_db();
+
+    // Check if relation already exist
+    $req  = $db->prepare( "DELETE FROM history WHERE user_id = $userId AND media_id = $mediaId" );
+    $req->execute();
+
+    // Close databse connection
+    $db   = null;
   }
 }

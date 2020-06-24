@@ -118,4 +118,28 @@ class Media {
 
     return $req->fetch();
   }
+
+  /**
+   * Add a media to favorit list for a user
+   * @param {Number} mediaId id of the media
+   * @param {Number} userId id of the user
+   */
+  public function addMediaToFavorite($mediaId, $userId){
+    $db   = init_db();
+
+    // Check if relation already exist
+    $req  = $db->prepare( "SELECT * FROM user_favorite_media WHERE user_id = $userId AND media_id = $mediaId" );
+    $req->execute();
+
+    if( $req->rowCount() > 0 ) throw new Exception( "Déjà ajouté aux favoris" );
+
+    $req  = $db->prepare("INSERT INTO user_favorite_media ( user_id, media_id ) VALUES ( :user_id, :media_id)");
+    $req->execute( array(
+      'user_id' => $userId,
+      'media_id' => $mediaId
+    ));
+
+    // Close databse connection
+    $db   = null;
+  }
 }

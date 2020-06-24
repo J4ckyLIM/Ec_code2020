@@ -9,17 +9,16 @@ require_once( 'model/media.php' );
 function mediaPage() {
   $search = isset( $_GET['title'] ) ? $_GET['title'] : null;
   $medias = Media::filterMedias($search);
-  require('view/mediaListView.php');
-}
-
-if(isset( $_GET['media'])){
-  showMedia($_GET['media']);
+  if(isset( $_GET['media'])){
+    showMedia($_GET['media']);
+  }
+  else {
+    require('view/mediaListView.php');
+  }
 }
 
 function showMedia($id) {
-  console_log($id);
   $media = Media::getMediaById($id);
-  console_log($media);
   require("view/mediaDetails.php");
 }
 

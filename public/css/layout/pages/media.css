@@ -33,6 +33,12 @@
     padding: 8px 20px;
     text-align: center;
 }
+
+.genre {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
 .media-list .item .title:after {
     content: "";
     display: block;
@@ -52,7 +58,7 @@
 
 }
 
-.video {
+.video_detail {
     height: 40%;
 }
 

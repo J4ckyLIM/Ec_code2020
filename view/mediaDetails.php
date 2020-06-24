@@ -15,16 +15,18 @@
 <div class="col mt-4">
     <div class="row mt-4">
         <div class="col mt-2">
-            <span id="media_genre" class="row"><?= $media['genre_id']?> <?= $media['type_id']?></span>
+            <span id="media_genre" class="row"><?= $media['type_name']?>: <?= $media['genre_name']?></span>
             <p class="row" id="media_duration"><?= $media['duration']?></p>
             <p class="row">Date de réalisation: <?= $media['release_date']?></p>
         </div>
         <span><?= $media['summary']?></span>
         <p></p>
     </div>
-    <div class="row video mt-4">
-        <iframe allowfullscreen="true" frameborder="0" width="100%" 
-            src="<?= $media['trailer_url']; ?>" ></iframe>
+    <div class="row video mt-4 video_detail">
+        <iframe width="100%" src="http://www.youtube.com/embed/'<?= $media['trailer_url']; ?>" frameborder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
     </div>
     
 </div>

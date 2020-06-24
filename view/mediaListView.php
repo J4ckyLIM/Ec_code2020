@@ -22,10 +22,12 @@
             <div class="video">
                 <div>
                     <iframe allowfullscreen="" frameborder="0"
-                            src="<?= $media['trailer_url']; ?>" ></iframe>
+                        src="http://www.youtube.com/embed/<?= $media['trailer_url']; ?>" >
+                    </iframe>
                 </div>
             </div>
             <div class="title"><?= $media['title']; ?></div>
+            <div class="genre"><?= $media['genre_name']; ?></div>
         </a>
     <?php endforeach; ?>
 </div>

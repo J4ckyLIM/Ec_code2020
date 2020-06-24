@@ -12,7 +12,6 @@ $(document).ready(function() {
 // Once the actual window loads, it fires this function
 window.onload = function() {
   $('#media_duration')[0].textContent = formatDuration($('#media_duration')[0].textContent)
-  $('#media_genre')[0].textContent = genreTypeIdConvertor($('#media_genre')[0].textContent)
 }
 
 /**
@@ -28,39 +27,4 @@ function formatDuration(minutes){
   return ("Durée: " + h + "h" + m);
 }
 
-/**
- * Convert the given id to the value corresponding to it in database (eg: 1 = Action ...// 1 = Film)
- * @param {String} value genre id of the media and its type id 
- * @return {String} the value it is corresponding to (eg: "Film: Action")
- */
-function genreTypeIdConvertor(value) {
-  let id = value.split(' ')[0]
-  let type = value.split(' ')[1]
-  let genre = ""
-  let mediaType = ""
-  switch(type){
-    case "1":
-      mediaType = "Film"
-      break;
-    case "2":
-      mediaType = "Série"
-      break;
-    default:
-      mediaType = "Film ou série"
-  }
-  switch(id){
-    case "1":
-      genre = "Action"
-      break;
-    case "2":
-      genre = "Horreur"
-      break;
-    case "3":
-      genre = "Science-Fiction"
-      break;
-    default:
-      genre = "Non défini"
-  }
-  return (mediaType + ' : '+ genre)
-}
 

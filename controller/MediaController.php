@@ -19,6 +19,7 @@ function mediaPage() {
     if(isset( $_POST['addToFav'])):
       try{
         Media::addMediaToFavorite($_GET['media'], $_SESSION['user_id']);
+        showMedia($_GET['media']);
       }
       catch(Exception $e) {
         alert("Ce médias est déjà dans vos favoris");

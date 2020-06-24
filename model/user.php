@@ -125,4 +125,26 @@ class User {
     return $req->fetch();
   }
 
+  /***************************************
+  * -------- UPDATE USER DATA  -----------
+  ****************************************/
+
+  /**
+   * Update the user email
+   * @param {Number} userId ID of the user
+   * @param {String} email new email of the user
+   * @param {String} password new password of the user
+   */
+  public function updateUserInfo($userId, $email, $password) {
+
+    // Open database connection
+    $db   = init_db();
+
+    $req  = $db->prepare( "UPDATE user SET email = '$email' , password = '$password' WHERE id = $userId" );
+    $req->execute();
+
+    // Close databse connection
+    $db   = null;
+  }
+
 }

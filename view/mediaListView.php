@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<?php if (!empty($favorites)): ?>
+<?php if (!empty($favorites) && (empty($search))): ?>
 <h3>Vos médias à regarder</h3>
     <div class="media-list" data="<?php $favorites ?>">
         <?php foreach( $favorites as $fav ): ?>

@@ -12,6 +12,7 @@ function mediaPage() {
   $medias = Media::filterMedias($search);
   $films = Media::getAllMediaByType(1); // Since 1 = films And 2 = series
   $series = Media::getAllMediaByType(2);
+  $favorites = Media::getUserFavoriteMedia($_SESSION['user_id']);
   console_log($series);
   console_log($films);
   if(isset( $_GET['media'])){

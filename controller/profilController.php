@@ -12,6 +12,8 @@ function profilPage() {
     $user = User::getUserById($user_id);
     if(isset($_POST['Valider'])) {
       updateProfil($user);
+      // Update current user data
+      $user = User::getUserById($user_id);
     }
     require('view/profilView.php');
   }
@@ -50,5 +52,4 @@ function updateProfil($user) {
       endif;
     endif;
   endif;
-  console_log($user);
 }
